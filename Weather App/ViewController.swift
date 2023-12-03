@@ -9,19 +9,19 @@ import UIKit
 
 class ViewController: UIViewController {
 
-    private lazy var customView: UIView = {
+    private lazy var backgroundView: UIImageView = {
         
         /*
-         teste
          criando a minha subview que somente é executada uma vez
          quando a propriedade é acessada pela primeira vez.
          Ela só é alocada na memória quando utilizada.
          */
         
-        let view = UIView(frame: .zero)
-        view.backgroundColor = .black
-        view.translatesAutoresizingMaskIntoConstraints = false
-        return view
+        let imageView = UIImageView(frame: .zero)
+        imageView.image = UIImage(named: "background")
+        imageView.contentMode = .scaleAspectFill
+        imageView.translatesAutoresizingMaskIntoConstraints = false
+        return imageView
     }()
     
     override func viewDidLoad() {
@@ -54,15 +54,15 @@ class ViewController: UIViewController {
     
     private func setHierarchy() {
         // adicionando a minha subview sob a minha view vermelha
-        view.addSubview(customView)
+        view.addSubview(backgroundView)
     }
     
     private func setConstraints() {
         NSLayoutConstraint.activate([
-            customView.topAnchor.constraint(equalTo: view.safeAreaLayoutGuide.topAnchor, constant: 100),
-            customView.leadingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.leadingAnchor, constant: 50),
-            customView.trailingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.trailingAnchor, constant: -50),
-            customView.bottomAnchor.constraint(equalTo: view.safeAreaLayoutGuide.bottomAnchor, constant: -100)
+            backgroundView.topAnchor.constraint(equalTo: view.topAnchor),
+            backgroundView.leadingAnchor.constraint(equalTo: view.leadingAnchor),
+            backgroundView.trailingAnchor.constraint(equalTo: view.trailingAnchor),
+            backgroundView.bottomAnchor.constraint(equalTo: view.bottomAnchor)
         ])
     }
 
