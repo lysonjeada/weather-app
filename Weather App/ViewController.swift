@@ -12,6 +12,7 @@ class ViewController: UIViewController {
     private lazy var customView: UIView = {
         
         /*
+         teste
          criando a minha subview que somente é executada uma vez
          quando a propriedade é acessada pela primeira vez.
          Ela só é alocada na memória quando utilizada.
