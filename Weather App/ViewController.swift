@@ -14,7 +14,7 @@ class ViewController: UIViewController {
         /*
          criando a minha subview que somente é executada uma vez
          quando a propriedade é acessada pela primeira vez.
-         Ela só é alocada na memória quando utilizada
+         Ela só é alocada na memória quando utilizada.
          */
         
         let view = UIView(frame: .zero)
