@@ -89,7 +89,7 @@ class ViewController: UIViewController {
     }
     
     private func setHierarchy() {
-        // adicionando a minha subview sob a minha view vermelha
+        // adicionando as minhas view a hierarquia
         view.addSubview(backgroundView)
         view.addSubview(headerView)
         
@@ -100,18 +100,21 @@ class ViewController: UIViewController {
     
     private func setConstraints() {
         NSLayoutConstraint.activate([
+            
             backgroundView.topAnchor.constraint(equalTo: view.topAnchor),
             backgroundView.leadingAnchor.constraint(equalTo: view.leadingAnchor),
             backgroundView.trailingAnchor.constraint(equalTo: view.trailingAnchor),
             backgroundView.bottomAnchor.constraint(equalTo: view.bottomAnchor)
+            
         ])
         
         NSLayoutConstraint.activate([
+            
+            headerView.heightAnchor.constraint(equalToConstant: 169),
             headerView.topAnchor.constraint(equalTo: view.safeAreaLayoutGuide.topAnchor, constant: 50),
             headerView.leadingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.leadingAnchor, constant: 35),
             headerView.trailingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.trailingAnchor, constant: -35),
-            headerView.heightAnchor.constraint(equalToConstant: 169),
-            //headerView.bottomAnchor.constraint(equalTo: view.safeAreaLayoutGuide.bottomAnchor, constant: )
+           
         ])
         
         NSLayoutConstraint.activate([
