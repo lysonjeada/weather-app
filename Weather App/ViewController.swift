@@ -8,7 +8,35 @@
 import UIKit
 
 class ViewController: UIViewController {
-
+    
+    private lazy var statsStackViews: UIStackView = {
+        let stackView = UIStackView()
+        stackView.axis = .vertical
+        stackView.spacing = 3
+        stackView.backgroundColor = .black
+//        stackView.backgroundColor = UIColor(named:"softGray")
+        stackView.layer.cornerRadius = 10
+        stackView.isLayoutMarginsRelativeArrangement = true
+        stackView.directionalLayoutMargins = NSDirectionalEdgeInsets(top: 12, leading: 24, bottom: 23, trailing: 24)
+        stackView.translatesAutoresizingMaskIntoConstraints = false
+        return stackView
+    }()
+    
+    private lazy var humidityInfo: StatsLabel = {
+        let variable = StatsLabel(text: "Umidade", value: "1000mm")
+        variable.translatesAutoresizingMaskIntoConstraints = false
+        variable.backgroundColor = .red
+        return variable
+    }()
+    
+    private lazy var windInfo: StatsLabel = {
+        let variable = StatsLabel(text: "Vento", value: "1090mm")
+        variable.translatesAutoresizingMaskIntoConstraints = false
+        variable.backgroundColor = .green
+        return variable
+        
+    }()
+    
     private lazy var backgroundView: UIImageView = {
         
         /*
@@ -83,15 +111,18 @@ class ViewController: UIViewController {
     
     private func setupView() {
         view.backgroundColor = .red
-
+        
         setHierarchy() // se eu não setar a hierarquia, o app não compila
         setConstraints()
     }
     
     private func setHierarchy() {
-        // adicionando as minhas view a hierarquia
+        statsStackViews.addArrangedSubview(humidityInfo)
+        statsStackViews.addArrangedSubview(windInfo)
+        
         view.addSubview(backgroundView)
         view.addSubview(headerView)
+        view.addSubview(statsStackViews)
         
         headerView.addSubview(cityLabel)
         headerView.addSubview(temperatureLabel)
@@ -114,7 +145,7 @@ class ViewController: UIViewController {
             headerView.topAnchor.constraint(equalTo: view.safeAreaLayoutGuide.topAnchor, constant: 50),
             headerView.leadingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.leadingAnchor, constant: 35),
             headerView.trailingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.trailingAnchor, constant: -35),
-           
+            
         ])
         
         NSLayoutConstraint.activate([
@@ -123,7 +154,6 @@ class ViewController: UIViewController {
             cityLabel.topAnchor.constraint(equalTo: headerView.topAnchor, constant: 15),
             cityLabel.leadingAnchor.constraint(equalTo: headerView.leadingAnchor, constant: 15),
             cityLabel.trailingAnchor.constraint(equalTo: headerView.trailingAnchor, constant: -15),
-            
             
             temperatureLabel.topAnchor.constraint(equalTo: cityLabel.bottomAnchor, constant: 21),
             temperatureLabel.leadingAnchor.constraint(equalTo: headerView.leadingAnchor, constant: 26),
@@ -134,8 +164,19 @@ class ViewController: UIViewController {
             weatherIcon.trailingAnchor.constraint(equalTo: headerView.trailingAnchor, constant: -26),
             weatherIcon.leadingAnchor.constraint(equalTo: temperatureLabel.trailingAnchor, constant: 15),
             weatherIcon.centerYAnchor.constraint(equalTo: temperatureLabel.centerYAnchor),
-           
+            
+            humidityInfo.topAnchor.constraint(equalTo: statsStackViews.topAnchor),
+            humidityInfo.heightAnchor.constraint(equalToConstant: 100),
+            
+            windInfo.topAnchor.constraint(equalTo: humidityInfo.bottomAnchor, constant: 40),
+            windInfo.heightAnchor.constraint(equalToConstant: 100),
+            
+            statsStackViews.topAnchor.constraint(equalTo: headerView.bottomAnchor, constant: 40),
+            statsStackViews.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 24),
+            statsStackViews.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -24),
+            statsStackViews.heightAnchor.constraint(equalToConstant: 500)
+            
         ])
     }
-
+    
 }
