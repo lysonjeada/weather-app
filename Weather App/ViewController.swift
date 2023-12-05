@@ -135,20 +135,12 @@ class ViewController: UIViewController {
             backgroundView.topAnchor.constraint(equalTo: view.topAnchor),
             backgroundView.leadingAnchor.constraint(equalTo: view.leadingAnchor),
             backgroundView.trailingAnchor.constraint(equalTo: view.trailingAnchor),
-            backgroundView.bottomAnchor.constraint(equalTo: view.bottomAnchor)
-            
-        ])
-        
-        NSLayoutConstraint.activate([
+            backgroundView.bottomAnchor.constraint(equalTo: view.bottomAnchor),
             
             headerView.heightAnchor.constraint(equalToConstant: 169),
             headerView.topAnchor.constraint(equalTo: view.safeAreaLayoutGuide.topAnchor, constant: 50),
             headerView.leadingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.leadingAnchor, constant: 35),
             headerView.trailingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.trailingAnchor, constant: -35),
-            
-        ])
-        
-        NSLayoutConstraint.activate([
             
             cityLabel.heightAnchor.constraint(equalToConstant: 20),
             cityLabel.topAnchor.constraint(equalTo: headerView.topAnchor, constant: 15),
